@@ -23,24 +23,17 @@ int partition(vector<int> &a, int l, int r){
 }
 
 void quicksortcount(vector<int> &v, long unsigned int &count, int l, int r){
-    // for(int i : v){
-    //     cout << i << " ";
-    // }
-    // cout << endl;
     if(v.size() <= 1 || (l >= r) || l < 0 || r < 0){
     	return;
     }
-    //cout << "l: " << l  << " r: " << r << " count: " << count << endl;
     //partition around that pivot
     int loc = partition(v, l, r);
     //recursively sort left half
     if((loc-1-l) >= 0){
         count += (loc-1-l);
     }
-    //cout << "count LEFT: " << count << endl;
     quicksortcount(v, count, l, loc-1);
     //recursively sort right half
-    //cout << "count RIGHT: " << count << endl;
     if((r-loc-1) >= 0){
         count += (r-loc-1);
     }
@@ -58,9 +51,6 @@ int main() {
     long unsigned int count = 0;
     quicksortcount(v, count, 0, v.size()-1);
     cout << count+9999 << endl;
-    //for(int i : v){
-    //    cout << i << " ";
-    //}
 
     return 0;
 }
